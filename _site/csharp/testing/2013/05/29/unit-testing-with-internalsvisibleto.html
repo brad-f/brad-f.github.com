@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Unit Testing with InternalsVisibleTo</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <div class="container">
+          <div class="col-md-12">
+            <h1>
+              <a href="/">Brad Fitzwater's Blog</a>
+            </h1>
+          </div>
+
+          <div class="col-md-12">
+            <h2>Unit Testing with InternalsVisibleTo</h2>
+<p class="meta">29 May 2013</p>
+
+<div class="post">
+<p>When developing a library, its useful to restrict access to Utility/Helper classes with the internal access modifier. From the C# <a href="http://msdn.microsoft.com/en-us/library/7c5ka91b(v=vs.80).aspx">reference</a>:</p>
+
+<blockquote>
+<p>A common use of internal access is in component-based development because it enables a group of components to cooperate in a private manner without being exposed to the rest of the application code. For example, a framework for building graphical user interfaces could provide Control and Form classes that cooperate using members with internal access. Since these members are internal, they are not exposed to code that is using the framework.</p>
+</blockquote>
+
+<p>Well defined boundaries always improve maintainability. This is critical when your assemblies are published via NuGet and you want to minimize breaking changes as your code evolves  the less code that can be accessed by the consumer, the easier the assembly is to maintain.</p>
+
+<p>However, when unit testing, this type of encapsulation can work against you. How can you test the internal methods from a test assembly when the methods are inaccessible? Luckily, the .Net framework solves this problem with the InternalsVisibleTo attribute. InternalsVisibleTo is an assembly level attribute that allows the developer to create Friend Assemblies, which have access to internal types and methods.  For example, given these two assemblies:</p>
+
+<ul>
+<li>Component.One  has some some internal types/methods</li>
+<li>Component.One.Test  a unit test assembly.</li>
+</ul>
+
+<p>You can make Component.One.Test a Friend Assembly of Component.One by adding this line to Component.Ones AssemblyInfo.cs:</p>
+
+<div class="highlight"><pre><code class="c#"><span class="na">  [assembly: InternalsVisibleTo(&quot;Component.One.Test&quot;)]</span>
+</code></pre></div>
+
+<p>Like most things, InternalsVisibleTo can be abused. I find its very useful for unit testing, but would hesitate to use it for anything else. Lastly, there are a few caveats when assemblies are strong-named, so I recommend reading the <a href="http://msdn.microsoft.com/en-us/library/system.runtime.compilerservices.internalsvisibletoattribute.aspx">documentation</a>.</p>
+
+</div>
+
+          </div>
+        </div>        
+    </body>
+</html>
