@@ -1,6 +1,6 @@
 name: Brad Fitzwater's Blog
-description: Building stuff.
-meta_description: "Building stuff"
+description: Build stuff
+meta_description: "Build stuff"
 
 markdown: redcarpet
 highlighter: pygments
@@ -12,4 +12,3 @@ domain_name: 'http://bradfitzwater.com'
 # Details for the RSS feed generator
 url:            'http://bradfitzwater.com'
 author:         'Brad Fitzwater'
-exclude:        [Thumbs.db]
