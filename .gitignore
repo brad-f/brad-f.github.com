@@ -4,3 +4,5 @@ _site
 .sass-cache
 
 Thumbs.db
+.vagrant
+VagrantFile
