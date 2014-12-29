@@ -1,5 +1,14 @@
-# General Jekyll Config
+name: Brad Fitzwater's Blog
+description: Build stuff
+meta_description: "Build stuff"
+
+markdown: redcarpet
 highlighter: pygments
-url: http://example.com
-lsi: false
-exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
+logo: false
+paginate: 15
+baseurl: /
+domain_name: 'http://bradfitzwater.com'
+
+# Details for the RSS feed generator
+url:            'http://bradfitzwater.com'
+author:         'Brad Fitzwater'
