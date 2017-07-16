@@ -1,26 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
     <title>bradfitzwater.com</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Roboto', sans-serif;
-      }
-      .frame {
-        width: 80%;
-        margin: auto;
-      }
-      h1 {
-        overflow-wrap: break-word;
-        font-size: 5em;
-      }
-    </style>
+    <link rel="stylesheet" href="build/index.bundle.css">
   </head>
   <body>
-    <div class="frame">
-      <h1>bradfitzwater.com</h1>
+    <div class="container-fluid">     
+      <div class="row sitemast-row align-items-center">
+        <div class="col-10 offset-sm-2">
+          <h1 class="display-3">
+            brad fitzwater's <span class="text-muted">experiments</span>
+          </h1>
+        </div>
+      </div>
+      <div class="row bio-row align-items-center">
+        <div class="col-3 offset-sm-2">
+          <img class="me-img img-fluid" src="./me.jpg" />
+        </div>
+        <div class="bio-text col-md-5">
+          <p>
+            Hi,
+          </p>
+          <p>
+            My name is Brad Fitzwater. I am a Software Developer currently living 
+            outside of Raleigh, NC. I was born and raised in Charleston, WV and graduated
+            with a degree in Computer Science from Marshall University. I enjoy tinkering 
+            with web things, drinking coffee and beer, reading old books, and listening
+            noisy rock albums.   
+          </p>
+          <p>
+            I am a husband and father of twins.
+          </p>
+          <p>
+            This site will, most likely, always be work in progress.
+          </p>
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-github" aria-hidden="true"></i>
+              <a href="https://github.com/brad-f">https://github.com/brad-f</a>
+            </li>
+            <li>
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+              <a href="https://twitter.com/bradfitzwater">https://twitter.com/bradfitzwater</a>
+            </li>            
+          </ul>          
+        </div>
+      </div>
     </div>
+    <script src="build/index.bundle.js"></script>
   </body>
 </html>
