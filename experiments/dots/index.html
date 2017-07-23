@@ -1,0 +1,66 @@
+<html>
+	<head>
+	<style>
+		.mover {
+			border-radius: 50%;
+			overflow: hidden;
+			height: 50px;
+			width: 50px;
+			position: absolute;
+		}
+	</style>
+	<script>
+		function randomTopOnScreen() {
+			var top = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+			return Math.random() * top;
+		}
+
+		function randomLeftOnScreen() {
+			var left = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+			return Math.random() * left;
+		}
+
+		function randomColor() {
+			var vector = [
+				Math.floor(Math.random() * 255),
+				Math.floor(Math.random() * 255),
+				Math.floor(Math.random() * 255),
+				0.5
+			];
+			return 'rgba(' + vector.join(',') + ')';
+		}
+
+		function move(mover) {
+			mover.style.top = randomTopOnScreen();
+			mover.style.left = randomLeftOnScreen();
+		}
+
+		function newMover(max, movers) {
+			if (movers.length === max) {
+				var mover = movers.shift();
+				move(mover);
+				movers.push(mover);
+			} else {
+				var mover = document.createElement('div');
+				mover.className = 'mover';
+				mover.style['background-color'] = randomColor();
+				move(mover);
+				movers.push(mover);
+
+				var stage = document.getElementById('stage');
+				stage.append(mover);
+			}
+		}
+
+		function onLoad() {
+			var movers = [];
+			var max = 8;
+			setInterval(newMover.bind(undefined, max, movers), 3000);
+		}
+	</script>
+	</head>
+	<body onload="onLoad()">
+		<div id="stage">
+		</div>
+	</body>
+</html>
